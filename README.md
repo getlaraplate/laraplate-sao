@@ -240,6 +240,16 @@ Each delivery is verified by the driver, unpacked into deploy events, recorded v
 the same `DeploymentIngestService` (deduped, census-projecting), and audited as an
 `IngestEvent`. The secret lives on the connection.
 
+**API switch for webhooks.** `POST api/v1/webhooks/{connection}` is an `/api` route, so it
+answers `403` while the Core `expose_api` setting is off (the default): an installation that
+receives push webhooks (`logs`, `code`, `deploy`) must turn the API on. The route runs as the
+anonymous user, under the per-address `api` rate limit (`core.api.rate_limit_per_minute`, 600 a
+minute), and the driver's own signature or token check authenticates the delivery; a delivery
+without a valid one is refused by the route. The route is not marked self-authenticated, so a sender
+that also sends an `Authorization: Bearer` header is treated as presenting a Laraplate API token
+and gets `401`: the shipped drivers verify custom headers (`X-Code-Token`, `X-Deploy-Token`,
+`X-Hub-Signature-256`, ...), not `Authorization`. See `Modules/Core/docs/rag/API_ACCESS_CONTROL.md`.
+
 ## Scripts
 
 Run commands from the **SAO module root** after `composer install`.
