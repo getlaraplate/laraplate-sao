@@ -9,6 +9,7 @@ use Modules\Core\Models\Role;
 use Modules\Core\Models\User;
 use Modules\SAO\Data\ChangeContext;
 use Modules\SAO\Enums\StatusCategory;
+use Modules\SAO\Filament\Resources\Tickets\Pages\EditTicket;
 use Modules\SAO\Filament\Resources\Tickets\Pages\ListTickets;
 use Modules\SAO\Filament\Resources\Tickets\Pages\ViewTicket;
 use Modules\SAO\Filament\Resources\Tickets\TicketResource;
@@ -103,4 +104,26 @@ test('the view page shows the ticket by name and its timeline read-only', functi
         ->assertDontSee('postComment');
 
     expect(method_exists(ViewTicket::class, 'postComment'))->toBeFalse();
+});
+
+test('the edit page opens with the ticket in its form', function (): void {
+    $ticket = Ticket::factory()->create();
+    $this->actingAs(ticketPanelSuperadmin());
+    Filament::setCurrentPanel('admin');
+
+    Livewire::test(EditTicket::class, ['record' => $ticket->getKey()])
+        ->assertSchemaStateSet(['title' => $ticket->title]);
+});
+
+test('the edit page refuses a save when the ticket changed after the form was opened', function (): void {
+    $ticket = Ticket::factory()->create();
+    $this->actingAs(ticketPanelSuperadmin());
+    Filament::setCurrentPanel('admin');
+    $page = Livewire::test(EditTicket::class, ['record' => $ticket->getKey()]);
+    Ticket::query()->findOrFail($ticket->getKey())->forceFill(['title' => 'Changed elsewhere'])->saveQuietly();
+
+    $page->fillForm(['title' => 'Edited here'])->call('save');
+
+    $page->assertNotified('This record was changed by someone else');
+    expect($ticket->fresh()->title)->toBe('Changed elsewhere');
 });

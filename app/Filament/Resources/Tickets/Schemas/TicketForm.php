@@ -66,8 +66,7 @@ final class TicketForm
                     ->multiple()
                     ->reorderable()
                     ->downloadable()
-                    ->columnSpanFull()
-                    ->icon(Heroicon::OutlinedPaperClip),
+                    ->columnSpanFull(),
             ]));
     }
 }
