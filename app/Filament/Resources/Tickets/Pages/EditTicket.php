@@ -9,12 +9,14 @@ use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
+use Modules\Core\Filament\Utils\GuardsAgainstStaleRecord;
 use Modules\Core\Filament\Utils\HasCloseOrCancelFormAction;
 use Modules\SAO\Filament\Resources\Tickets\TicketResource;
 use Override;
 
 final class EditTicket extends EditRecord
 {
+    use GuardsAgainstStaleRecord;
     use HasCloseOrCancelFormAction;
 
     #[Override]
