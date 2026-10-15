@@ -12,6 +12,7 @@ use Modules\Core\ApplicationContent\Data\ApplicationContentQuery;
 use Modules\Core\ApplicationContent\Data\ApplicationContentResult;
 use Modules\Core\ApplicationContent\Data\ApplicationContentSourceDescriptor;
 use Modules\Core\Casts\FiltersGroup;
+use Modules\Core\Helpers\LocaleContext;
 use Modules\Core\Search\DTOs\AdvancedSearchResult;
 use Modules\Core\Search\Services\AdvancedSearchService;
 use Modules\Core\Services\Crud\QueryBuilder;
@@ -42,7 +43,7 @@ final class SaoApplicationContentRetrievalProvider implements ApplicationContent
             source: 'sao.tickets',
             module: 'sao',
             entity: 'tickets',
-            supportedLocales: [(string) config('app.locale', 'en')],
+            supportedLocales: [LocaleContext::getDefault()],
             capabilities: ['hybrid', 'lexical', 'semantic'],
             intentCategories: ['application_content', 'sao', 'ticket', 'issue', 'task'],
         );
