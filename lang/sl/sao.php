@@ -23,8 +23,8 @@ return [
             'singular' => 'Povezava',
         ],
         'deployments' => [
-            'singular' => 'Namestitev',
             'plural' => 'Namestitve',
+            'singular' => 'Namestitev',
         ],
         'environments' => [
             'plural' => 'Okolja',
@@ -55,20 +55,20 @@ return [
             'singular' => 'Profil virov',
         ],
         'ticket_statuses' => [
-            'singular' => 'Stanje zahtevka',
             'plural' => 'Stanja zahtevkov',
+            'singular' => 'Stanje zahtevka',
         ],
         'ticket_types' => [
-            'singular' => 'Vrsta zahtevka',
             'plural' => 'Vrste zahtevkov',
+            'singular' => 'Vrsta zahtevka',
         ],
         'tickets' => [
             'plural' => 'Zahtevki',
             'singular' => 'Zahtevek',
         ],
         'workflow_schemes' => [
-            'singular' => 'Shema poteka dela',
             'plural' => 'Sheme poteka dela',
+            'singular' => 'Shema poteka dela',
         ],
     ],
     'enums' => [

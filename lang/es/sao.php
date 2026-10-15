@@ -23,8 +23,8 @@ return [
             'singular' => 'Conexión',
         ],
         'deployments' => [
-            'singular' => 'Despliegue',
             'plural' => 'Despliegues',
+            'singular' => 'Despliegue',
         ],
         'environments' => [
             'plural' => 'Entornos',
@@ -55,20 +55,20 @@ return [
             'singular' => 'Perfil de origen',
         ],
         'ticket_statuses' => [
-            'singular' => 'Estado de ticket',
             'plural' => 'Estados de ticket',
+            'singular' => 'Estado de ticket',
         ],
         'ticket_types' => [
-            'singular' => 'Tipo de ticket',
             'plural' => 'Tipos de ticket',
+            'singular' => 'Tipo de ticket',
         ],
         'tickets' => [
             'plural' => 'Tickets',
             'singular' => 'Ticket',
         ],
         'workflow_schemes' => [
-            'singular' => 'Esquema de flujo',
             'plural' => 'Esquemas de flujo',
+            'singular' => 'Esquema de flujo',
         ],
     ],
     'enums' => [
