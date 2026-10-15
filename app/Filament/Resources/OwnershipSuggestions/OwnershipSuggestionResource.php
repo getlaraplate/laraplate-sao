@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\OwnershipSuggestions\Pages\ListOwnershipSuggestions;
 use Modules\SAO\Filament\Resources\OwnershipSuggestions\Pages\ViewOwnershipSuggestion;
 use Modules\SAO\Filament\Resources\OwnershipSuggestions\Schemas\OwnershipSuggestionInfolist;
@@ -28,10 +29,12 @@ use UnitEnum;
  */
 final class OwnershipSuggestionResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = OwnershipSuggestion::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Governance';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.governance';
 
     #[Override]
     protected static ?int $navigationSort = 30;

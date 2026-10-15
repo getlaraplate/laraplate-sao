@@ -22,6 +22,10 @@ return [
             'plural' => 'Povezave',
             'singular' => 'Povezava',
         ],
+        'deployments' => [
+            'singular' => 'Namestitev',
+            'plural' => 'Namestitve',
+        ],
         'environments' => [
             'plural' => 'Okolja',
             'singular' => 'Okolje',
@@ -50,9 +54,21 @@ return [
             'plural' => 'Profili virov',
             'singular' => 'Profil virov',
         ],
+        'ticket_statuses' => [
+            'singular' => 'Stanje zahtevka',
+            'plural' => 'Stanja zahtevkov',
+        ],
+        'ticket_types' => [
+            'singular' => 'Vrsta zahtevka',
+            'plural' => 'Vrste zahtevkov',
+        ],
         'tickets' => [
             'plural' => 'Zahtevki',
             'singular' => 'Zahtevek',
+        ],
+        'workflow_schemes' => [
+            'singular' => 'Shema poteka dela',
+            'plural' => 'Sheme poteka dela',
         ],
     ],
     'enums' => [
@@ -142,5 +158,11 @@ return [
         'connectionUnhealthyUnknown' => 'Povezava ne deluje: neznana napaka.',
         'replayResult' => 'Ponovna obdelava (preizkus]: končno stanje »:status«.',
         'transitionNotAllowed' => 'Ta prehod za ta zahtevek ni dovoljen.',
+    ],
+    'navigation' => [
+        'delivery' => 'SAO - Dostava',
+        'governance' => 'SAO - Upravljanje',
+        'signals' => 'SAO - Signali',
+        'ticketing' => 'SAO - Zahtevki',
     ],
 ];

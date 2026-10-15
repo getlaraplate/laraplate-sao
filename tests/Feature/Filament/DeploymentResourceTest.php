@@ -12,7 +12,7 @@ function sao_deployment_source(string $relativePath): string
 
 test('the deployment resource is bound to its model under the SAO group', function (): void {
     expect(DeploymentResource::getModel())->toBe(Deployment::class)
-        ->and(DeploymentResource::getNavigationGroup())->toBe('SAO - Delivery')
+        ->and(DeploymentResource::getNavigationGroup())->toBe('sao.navigation.delivery')
         ->and(DeploymentResource::getSlug())->toStartWith('sao/');
 });
 

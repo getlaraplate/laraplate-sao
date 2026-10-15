@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Deployments\Pages\ListDeployments;
 use Modules\SAO\Filament\Resources\Deployments\Pages\ViewDeployment;
 use Modules\SAO\Filament\Resources\Deployments\Schemas\DeploymentInfolist;
@@ -29,10 +30,12 @@ use UnitEnum;
  */
 final class DeploymentResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Deployment::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Delivery';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.delivery';
 
     #[Override]
     protected static ?int $navigationSort = 10;

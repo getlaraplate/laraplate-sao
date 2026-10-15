@@ -22,6 +22,10 @@ return [
             'plural' => 'Verbindungen',
             'singular' => 'Verbindung',
         ],
+        'deployments' => [
+            'singular' => 'Deployment',
+            'plural' => 'Deployments',
+        ],
         'environments' => [
             'plural' => 'Umgebungen',
             'singular' => 'Umgebung',
@@ -50,9 +54,21 @@ return [
             'plural' => 'Quellprofile',
             'singular' => 'Quellprofil',
         ],
+        'ticket_statuses' => [
+            'singular' => 'Ticketstatus',
+            'plural' => 'Ticketstatus',
+        ],
+        'ticket_types' => [
+            'singular' => 'Tickettyp',
+            'plural' => 'Tickettypen',
+        ],
         'tickets' => [
             'plural' => 'Tickets',
             'singular' => 'Ticket',
+        ],
+        'workflow_schemes' => [
+            'singular' => 'Workflow-Schema',
+            'plural' => 'Workflow-Schemas',
         ],
     ],
     'enums' => [
@@ -142,5 +158,11 @@ return [
         'connectionUnhealthyUnknown' => 'Verbindung fehlerhaft: unbekannter Fehler.',
         'replayResult' => 'Erneute Verarbeitung (Probelauf]: resultierender Status „:status“.',
         'transitionNotAllowed' => 'Dieser Übergang ist für dieses Ticket nicht erlaubt.',
+    ],
+    'navigation' => [
+        'delivery' => 'SAO - Auslieferung',
+        'governance' => 'SAO - Governance',
+        'signals' => 'SAO - Signale',
+        'ticketing' => 'SAO - Tickets',
     ],
 ];

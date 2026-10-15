@@ -49,7 +49,7 @@ final class TicketBoard extends Page
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedViewColumns;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Ticketing';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.ticketing';
 
     #[Override]
     protected static ?int $navigationSort = 10;

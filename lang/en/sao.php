@@ -22,6 +22,10 @@ return [
             'plural' => 'Connections',
             'singular' => 'Connection',
         ],
+        'deployments' => [
+            'singular' => 'Deployment',
+            'plural' => 'Deployments',
+        ],
         'environments' => [
             'plural' => 'Environments',
             'singular' => 'Environment',
@@ -50,9 +54,21 @@ return [
             'plural' => 'Source profiles',
             'singular' => 'Source profile',
         ],
+        'ticket_statuses' => [
+            'singular' => 'Ticket status',
+            'plural' => 'Ticket statuses',
+        ],
+        'ticket_types' => [
+            'singular' => 'Ticket type',
+            'plural' => 'Ticket types',
+        ],
         'tickets' => [
             'plural' => 'Tickets',
             'singular' => 'Ticket',
+        ],
+        'workflow_schemes' => [
+            'singular' => 'Workflow scheme',
+            'plural' => 'Workflow schemes',
         ],
     ],
     'enums' => [
@@ -142,5 +158,11 @@ return [
         'connectionUnhealthyUnknown' => 'Connection unhealthy: unknown error.',
         'replayResult' => 'Replay (dry run]: resulting status ":status".',
         'transitionNotAllowed' => 'This transition is not allowed for this ticket.',
+    ],
+    'navigation' => [
+        'delivery' => 'SAO - Delivery',
+        'governance' => 'SAO - Governance',
+        'signals' => 'SAO - Signals',
+        'ticketing' => 'SAO - Ticketing',
     ],
 ];

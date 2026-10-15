@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Releases\Pages\CreateRelease;
 use Modules\SAO\Filament\Resources\Releases\Pages\EditRelease;
 use Modules\SAO\Filament\Resources\Releases\Pages\ListReleases;
@@ -24,10 +25,12 @@ use UnitEnum;
 
 final class ReleaseResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Release::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Delivery';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.delivery';
 
     #[Override]
     protected static ?int $navigationSort = 40;

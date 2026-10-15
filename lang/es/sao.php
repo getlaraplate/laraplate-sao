@@ -22,6 +22,10 @@ return [
             'plural' => 'Conexiones',
             'singular' => 'Conexión',
         ],
+        'deployments' => [
+            'singular' => 'Despliegue',
+            'plural' => 'Despliegues',
+        ],
         'environments' => [
             'plural' => 'Entornos',
             'singular' => 'Entorno',
@@ -50,9 +54,21 @@ return [
             'plural' => 'Perfiles de origen',
             'singular' => 'Perfil de origen',
         ],
+        'ticket_statuses' => [
+            'singular' => 'Estado de ticket',
+            'plural' => 'Estados de ticket',
+        ],
+        'ticket_types' => [
+            'singular' => 'Tipo de ticket',
+            'plural' => 'Tipos de ticket',
+        ],
         'tickets' => [
             'plural' => 'Tickets',
             'singular' => 'Ticket',
+        ],
+        'workflow_schemes' => [
+            'singular' => 'Esquema de flujo',
+            'plural' => 'Esquemas de flujo',
         ],
     ],
     'enums' => [
@@ -142,5 +158,11 @@ return [
         'connectionUnhealthyUnknown' => 'Conexión con errores: error desconocido.',
         'replayResult' => 'Reprocesado (simulación]: estado resultante «:status».',
         'transitionNotAllowed' => 'Esta transición no está permitida para este ticket.',
+    ],
+    'navigation' => [
+        'delivery' => 'SAO - Entrega',
+        'governance' => 'SAO - Gobernanza',
+        'signals' => 'SAO - Señales',
+        'ticketing' => 'SAO - Tickets',
     ],
 ];

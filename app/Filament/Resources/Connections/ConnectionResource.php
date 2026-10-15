@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Connections\Pages\CreateConnection;
 use Modules\SAO\Filament\Resources\Connections\Pages\EditConnection;
 use Modules\SAO\Filament\Resources\Connections\Pages\ListConnections;
@@ -23,10 +24,12 @@ use UnitEnum;
 
 final class ConnectionResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Connection::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Signals';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.signals';
 
     #[Override]
     protected static ?int $navigationSort = 20;

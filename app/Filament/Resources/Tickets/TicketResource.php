@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Modules\Core\Filament\RelationManagers\MediaRelationManager;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Tickets\Pages\CreateTicket;
 use Modules\SAO\Filament\Resources\Tickets\Pages\EditTicket;
 use Modules\SAO\Filament\Resources\Tickets\Pages\ListTickets;
@@ -28,10 +29,12 @@ use UnitEnum;
 
 final class TicketResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Ticket::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Ticketing';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.ticketing';
 
     #[Override]
     protected static ?int $navigationSort = 20;

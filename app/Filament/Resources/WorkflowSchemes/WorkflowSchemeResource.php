@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\WorkflowSchemes\Pages\CreateWorkflowScheme;
 use Modules\SAO\Filament\Resources\WorkflowSchemes\Pages\EditWorkflowScheme;
 use Modules\SAO\Filament\Resources\WorkflowSchemes\Pages\ListWorkflowSchemes;
@@ -24,10 +25,12 @@ use UnitEnum;
 
 final class WorkflowSchemeResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = WorkflowScheme::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Ticketing';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.ticketing';
 
     #[Override]
     protected static ?int $navigationSort = 50;

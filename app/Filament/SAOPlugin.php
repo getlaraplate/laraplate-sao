@@ -44,10 +44,10 @@ final class SAOPlugin implements Plugin
         }
 
         $panel->navigationGroups([
-            NavigationGroup::make()->label('SAO - Ticketing')->icon(Heroicon::OutlinedTicket),
-            NavigationGroup::make()->label('SAO - Delivery')->icon(Heroicon::OutlinedRocketLaunch),
-            NavigationGroup::make()->label('SAO - Signals')->icon(Heroicon::OutlinedSignal),
-            NavigationGroup::make()->label('SAO - Governance')->icon(Heroicon::OutlinedShieldCheck),
+            'sao.navigation.ticketing' => NavigationGroup::make()->label(static fn (): string => (string) __('sao.navigation.ticketing'))->icon(Heroicon::OutlinedTicket),
+            'sao.navigation.delivery' => NavigationGroup::make()->label(static fn (): string => (string) __('sao.navigation.delivery'))->icon(Heroicon::OutlinedRocketLaunch),
+            'sao.navigation.signals' => NavigationGroup::make()->label(static fn (): string => (string) __('sao.navigation.signals'))->icon(Heroicon::OutlinedSignal),
+            'sao.navigation.governance' => NavigationGroup::make()->label(static fn (): string => (string) __('sao.navigation.governance'))->icon(Heroicon::OutlinedShieldCheck),
         ]);
     }
 }

@@ -19,17 +19,15 @@ it('registers the SAO Filament surfaces on the admin panel', function (): void {
 
 it('registers its own navigation groups with the module icon on the first one', function (): void {
     $groups = collect(Filament::getPanel('admin')->getNavigationGroups())
-        ->filter(static fn (NavigationGroup $group): bool => str_starts_with($group->getLabel(), 'SAO - '));
+        ->filter(static fn (NavigationGroup $group, int|string $key): bool => str_starts_with((string) $key, 'sao.navigation.'));
 
-    expect($groups->map(static fn (NavigationGroup $group): string => $group->getLabel())->values()->all())
-        ->toBe(['SAO - Ticketing', 'SAO - Delivery', 'SAO - Signals', 'SAO - Governance'])
+    expect($groups->keys()->all())
+        ->toBe(['sao.navigation.ticketing', 'sao.navigation.delivery', 'sao.navigation.signals', 'sao.navigation.governance'])
         ->and($groups->first()->getIcon())->toBe(Heroicon::OutlinedTicket);
 });
 
 it('registers every navigation group used by the SAO resources and pages', function (): void {
-    $registered = collect(Filament::getPanel('admin')->getNavigationGroups())
-        ->map(static fn (NavigationGroup $group): string => $group->getLabel())
-        ->all();
+    $registered = array_keys(Filament::getPanel('admin')->getNavigationGroups());
 
     $used = collect(Filament::getPanel('admin')->getResources())
         ->merge(Filament::getPanel('admin')->getPages())

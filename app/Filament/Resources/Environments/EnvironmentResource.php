@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Environments\Pages\CreateEnvironment;
 use Modules\SAO\Filament\Resources\Environments\Pages\EditEnvironment;
 use Modules\SAO\Filament\Resources\Environments\Pages\ListEnvironments;
@@ -23,10 +24,12 @@ use UnitEnum;
 
 final class EnvironmentResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Environment::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Delivery';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.delivery';
 
     #[Override]
     protected static ?int $navigationSort = 20;

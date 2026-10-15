@@ -8,7 +8,7 @@ use Modules\SAO\Filament\Pages\TicketBoard;
 uses(RefreshDatabase::class);
 
 test('the board page sits in the SAO navigation group', function (): void {
-    expect(TicketBoard::getNavigationGroup())->toBe('SAO - Ticketing')
+    expect(TicketBoard::getNavigationGroup())->toBe('sao.navigation.ticketing')
         ->and(TicketBoard::getSlug())->toBe('sao/board');
 });
 

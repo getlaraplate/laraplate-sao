@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\SourceProfiles\Pages\CreateSourceProfile;
 use Modules\SAO\Filament\Resources\SourceProfiles\Pages\EditSourceProfile;
 use Modules\SAO\Filament\Resources\SourceProfiles\Pages\ListSourceProfiles;
@@ -30,10 +31,12 @@ use UnitEnum;
  */
 final class SourceProfileResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = SourceProfile::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Signals';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.signals';
 
     #[Override]
     protected static ?int $navigationSort = 40;

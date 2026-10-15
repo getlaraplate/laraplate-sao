@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\TicketStatuses\Pages\CreateTicketStatus;
 use Modules\SAO\Filament\Resources\TicketStatuses\Pages\EditTicketStatus;
 use Modules\SAO\Filament\Resources\TicketStatuses\Pages\ListTicketStatuses;
@@ -23,10 +24,12 @@ use UnitEnum;
 
 final class TicketStatusResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = TicketStatus::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Ticketing';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.ticketing';
 
     #[Override]
     protected static ?int $navigationSort = 30;

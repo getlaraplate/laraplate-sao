@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\Projects\Pages\CreateProject;
 use Modules\SAO\Filament\Resources\Projects\Pages\EditProject;
 use Modules\SAO\Filament\Resources\Projects\Pages\ListProjects;
@@ -24,10 +25,12 @@ use UnitEnum;
 
 final class ProjectResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = Project::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Delivery';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.delivery';
 
     #[Override]
     protected static ?int $navigationSort = 30;

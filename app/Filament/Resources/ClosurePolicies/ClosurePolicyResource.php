@@ -12,6 +12,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Utils\HasTranslatedResourceLabels;
 use Modules\SAO\Filament\Resources\ClosurePolicies\Pages\CreateClosurePolicy;
 use Modules\SAO\Filament\Resources\ClosurePolicies\Pages\EditClosurePolicy;
 use Modules\SAO\Filament\Resources\ClosurePolicies\Pages\ListClosurePolicies;
@@ -23,10 +24,12 @@ use UnitEnum;
 
 final class ClosurePolicyResource extends Resource
 {
+    use HasTranslatedResourceLabels;
+
     protected static ?string $model = ClosurePolicy::class;
 
     #[Override]
-    protected static string|UnitEnum|null $navigationGroup = 'SAO - Governance';
+    protected static string|UnitEnum|null $navigationGroup = 'sao.navigation.governance';
 
     #[Override]
     protected static ?int $navigationSort = 20;
