@@ -44,7 +44,6 @@ final class TicketsTable
                         ->searchable(),
                     TextColumn::make('labels.name')
                         ->badge()
-                        ->label('Labels')
                         ->toggleable(),
                     TextColumn::make('due_at')
                         ->dateTime()
@@ -65,7 +64,6 @@ final class TicketsTable
                     // By category rather than by status name, so the filter means the same thing
                     // across projects that name their statuses differently.
                     SelectFilter::make('status_category')
-                        ->label('Status category')
                         ->options(StatusCategory::class)
                         ->query(static fn (Builder $query, array $data): Builder => blank($data['value'] ?? null)
                             ? $query
@@ -77,7 +75,6 @@ final class TicketsTable
                         ->multiple()
                         ->preload(),
                     Filter::make('overdue')
-                        ->label('Overdue')
                         ->query(static fn (Builder $query): Builder => $query->overdue()),
                 );
             },

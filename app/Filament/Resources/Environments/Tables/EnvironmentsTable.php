@@ -20,21 +20,19 @@ final class EnvironmentsTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('project.name')
-                        ->label('Project')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('name')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('current_version')
-                        ->label('Version')
+                        ->label(__('sao.fields.version'))
                         ->searchable()
                         ->placeholder('—'),
                     TextColumn::make('last_seen_at')
-                        ->label('Last seen')
                         ->dateTime()
                         ->sortable()
-                        ->placeholder('never'),
+                        ->placeholder(__('sao.help.never')),
                 );
             },
         );

@@ -13,6 +13,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Modules\SAO\Enums\ReleaseTagKind;
 
 /**
@@ -23,14 +24,18 @@ final class TagsRelationManager extends RelationManager
 {
     protected static string $relationship = 'tags';
 
-    protected static ?string $title = 'Tags';
+    #[Override]
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return (string) __('sao.pages.tags');
+    }
 
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 TextInput::make('tag')
-                    ->helperText('The concrete VCS tag, e.g. v1.4.0 or v1.4.0-rc.1.')
+                    ->helperText(__('sao.help.tag'))
                     ->required()
                     ->maxLength(255),
                 Select::make('kind')

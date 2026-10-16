@@ -55,17 +55,17 @@ final class TicketBoard extends Page
     protected static ?int $navigationSort = 10;
 
     #[Override]
-    protected static ?string $navigationLabel = 'Board';
-
-    #[Override]
-    protected static ?string $title = 'Board';
-
-    #[Override]
     protected string $view = 'sao::filament.pages.ticket-board';
 
     public static function getSlug(?\Filament\Panel $panel = null): string
     {
         return 'sao/board';
+    }
+
+    #[Override]
+    public static function getNavigationLabel(): string
+    {
+        return (string) __('sao.pages.board');
     }
 
     public function mount(): void
@@ -79,11 +79,11 @@ final class TicketBoard extends Page
             ->statePath('data')
             ->components([
                 Select::make('projectId')
-                    ->label('Project')
+                    ->label(__('sao.fields.project'))
                     ->options(Project::query()->orderBy('name')->pluck('name', 'id')->all())
                     ->live()
                     ->afterStateUpdated(fn (mixed $state): ?int => $this->projectId = $state === null ? null : (int) $state)
-                    ->placeholder('Choose a project'),
+                    ->placeholder(__('sao.help.chooseAProject')),
             ]);
     }
 
@@ -134,7 +134,7 @@ final class TicketBoard extends Page
         $ticket = app(TicketQueryService::class)->visible()->find($ticketId);
 
         if (! $ticket instanceof Ticket) {
-            Notification::make()->title('Ticket not found or not visible.')->danger()->send();
+            Notification::make()->title(__('sao.messages.ticketNotFound'))->danger()->send();
 
             return;
         }
@@ -144,7 +144,7 @@ final class TicketBoard extends Page
         $status = TicketStatus::query()->find($toStatusId);
 
         if (! $status instanceof TicketStatus) {
-            Notification::make()->title('Unknown status.')->danger()->send();
+            Notification::make()->title(__('sao.messages.unknownStatus'))->danger()->send();
 
             return;
         }
@@ -153,8 +153,14 @@ final class TicketBoard extends Page
             app(WorkflowService::class)->transition($ticket, $status, ChangeContext::forUser($this->currentUser()));
             Notification::make()->title("{$ticket->key} moved to {$status->name}.")->success()->send();
         } catch (TransitionNotAllowedException) {
-            Notification::make()->title('That move is not allowed by the workflow.')->danger()->send();
+            Notification::make()->title(__('sao.messages.moveNotAllowed'))->danger()->send();
         }
+    }
+
+    #[Override]
+    public function getTitle(): string
+    {
+        return (string) __('sao.pages.board');
     }
 
     private function resolveProjectId(): ?int

@@ -19,22 +19,19 @@ final class EnvironmentForm
         return self::configureForm($schema
             ->components([
                 Select::make('project_id')
-                    ->label('Project')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 TextInput::make('name')
-                    ->helperText('e.g. production, staging.')
+                    ->helperText(__('sao.help.environmentName'))
                     ->required()
                     ->maxLength(255),
                 TextInput::make('current_version')
-                    ->label('Current version')
-                    ->helperText('The version last seen running.')
+                    ->helperText(__('sao.help.currentVersion'))
                     ->maxLength(255),
                 DateTimePicker::make('last_seen_at')
-                    ->label('Last seen at')
-                    ->helperText('When the version was last observed or probed.'),
+                    ->helperText(__('sao.help.lastSeenAt')),
             ]));
     }
 }

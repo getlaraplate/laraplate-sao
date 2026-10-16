@@ -20,7 +20,6 @@ final class DeploymentsTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('project.name')
-                        ->label('Project')
                         ->sortable(),
                     TextColumn::make('version')
                         ->searchable()
@@ -29,14 +28,11 @@ final class DeploymentsTable
                         ->badge()
                         ->sortable(),
                     TextColumn::make('environment.name')
-                        ->label('Environment')
                         ->placeholder('—')
                         ->sortable(),
                     TextColumn::make('release.version')
-                        ->label('Release')
                         ->placeholder('—'),
                     TextColumn::make('connection.name')
-                        ->label('Connection')
                         ->placeholder('—')
                         ->sortable(),
                     TextColumn::make('started_at')

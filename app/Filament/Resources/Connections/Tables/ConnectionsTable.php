@@ -27,28 +27,25 @@ final class ConnectionsTable
                     TextColumn::make('name')
                         ->searchable(),
                     TextColumn::make('driver_key')
-                        ->label('Driver')
                         ->badge()
                         ->searchable(),
                     TextColumn::make('capabilities')
                         ->badge(),
                     TextColumn::make('health_state')
-                        ->label('Health')
                         ->badge(),
                     TextColumn::make('base_url')
-                        ->label('Base URL')
                         ->placeholder('—')
                         ->toggleable(),
                     TextColumn::make('last_checked_at')
                         ->dateTime()
-                        ->placeholder('never')
+                        ->placeholder(__('sao.help.never'))
                         ->toggleable(),
                 );
             },
             actions: static function (Collection $default_actions): void {
                 $default_actions->unshift(
                     Action::make('testConnection')
-                        ->label('Test connection')
+                        ->label(__('sao.actions.testConnection'))
                         ->icon(Heroicon::OutlinedSignal)
                         ->action(static function (Connection $record): void {
                             $result = app(ConnectionHealthService::class)->check($record);

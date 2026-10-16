@@ -19,14 +19,14 @@ final class TicketInfolist
         return $schema
             ->components([
                 TextEntry::make('project.name')
-                    ->label('Project'),
+                    ->label(__('sao.fields.project')),
                 TextEntry::make('number')
                     ->numeric(),
                 TextEntry::make('key'),
                 TextEntry::make('type.name')
-                    ->label('Type'),
+                    ->label(__('sao.fields.type')),
                 TextEntry::make('status.name')
-                    ->label('Status')
+                    ->label(__('sao.fields.status'))
                     ->badge(),
                 TextEntry::make('priority')
                     ->badge(),
@@ -35,10 +35,10 @@ final class TicketInfolist
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('reporter.name')
-                    ->label('Reporter')
+                    ->label(__('sao.fields.reporter'))
                     ->placeholder('-'),
                 TextEntry::make('assignee.name')
-                    ->label('Assignee')
+                    ->label(__('sao.fields.assignee'))
                     ->placeholder('-'),
                 TextEntry::make('created_at')
                     ->dateTime(),
@@ -48,7 +48,6 @@ final class TicketInfolist
                     ->dateTime()
                     ->visible(fn (Ticket $record): bool => $record->trashed()),
                 ViewEntry::make('timeline')
-                    ->label('Timeline')
                     ->view('sao::filament.tickets.timeline')
                     ->state(static fn (Ticket $record): array => self::timeline($record))
                     ->columnSpanFull(),

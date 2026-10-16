@@ -36,28 +36,27 @@ final class SourceProfileForm
                     ->required()
                     ->maxLength(255),
                 Toggle::make('is_active')
-                    ->label('Active')
                     ->default(true),
                 Repeater::make('matchers')
-                    ->helperText('All matchers must pass (AND) for the profile to apply to a payload.')
+                    ->helperText(__('sao.help.matchers'))
                     ->schema([
                         TextInput::make('path')
-                            ->label('Payload path')
-                            ->helperText('Dot-path into the payload, e.g. error.type.')
+                            ->label(__('sao.fields.payload_path'))
+                            ->helperText(__('sao.help.payloadPath'))
                             ->required(),
                         Select::make('operator')
                             ->options(self::MATCHER_OPERATORS)
                             ->default('equals')
                             ->required(),
                         TextInput::make('value')
-                            ->helperText('Compared for equals/contains; ignored for exists.'),
+                            ->helperText(__('sao.help.matcherValue')),
                     ])
                     ->addActionLabel('Add matcher')
                     ->columns(3),
                 KeyValue::make('field_bindings')
                     ->keyLabel('Canonical field')
                     ->valueLabel('Payload path')
-                    ->helperText('Map a canonical field to a payload dot-path, e.g. message = error.message.')
+                    ->helperText(__('sao.help.fieldBindings'))
                     ->required(),
             ]));
     }

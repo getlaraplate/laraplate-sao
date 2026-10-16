@@ -24,11 +24,9 @@ final class SourceProfilesTable
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('matchers')
-                        ->label('Matchers')
                         ->badge()
                         ->state(static fn (SourceProfile $record): int => count($record->matchers)),
                     TextColumn::make('field_bindings')
-                        ->label('Bindings')
                         ->badge()
                         ->state(static fn (SourceProfile $record): int => count($record->field_bindings)),
                 );

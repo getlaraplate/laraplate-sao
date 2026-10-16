@@ -33,28 +33,25 @@ final class TransitionsRelationManager extends RelationManager
         return $schema
             ->components([
                 Select::make('from_status_id')
-                    ->label('From status')
                     ->relationship('fromStatus', 'name')
                     ->searchable()
                     ->preload()
-                    ->placeholder('(new ticket)')
-                    ->helperText('Leave empty to declare the status a new ticket starts in. A scheme may have only one such transition.'),
+                    ->placeholder(__('sao.help.newTicket'))
+                    ->helperText(__('sao.help.initialTransition')),
                 Select::make('to_status_id')
-                    ->label('To status')
                     ->relationship('toStatus', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 TextInput::make('label')
-                    ->helperText('The wording of the button a person will click.')
+                    ->helperText(__('sao.help.transitionLabel'))
                     ->required()
                     ->maxLength(255),
                 // Picked, never typed. The value goes straight to `Gate::allows()`, which
                 // fails closed on a name that does not exist, so a typo used to deny the
                 // transition for everybody, permanently, without a word anywhere.
                 Select::make('required_permission')
-                    ->label('Required permission')
-                    ->helperText('Optional. Only holders of this permission may take the transition.')
+                    ->helperText(__('sao.help.requiredPermission'))
                     ->searchable()
                     ->getSearchResultsUsing(static fn (string $search): array => Permission::query()
                         ->where('name', 'like', '%' . $search . '%')
@@ -75,13 +72,13 @@ final class TransitionsRelationManager extends RelationManager
             ->recordTitleAttribute('label')
             ->columns([
                 TextColumn::make('fromStatus.name')
-                    ->label('From')
+                    ->label(__('sao.fields.from_status'))
                     // An empty cell would read as missing data rather than as the
                     // deliberate marker of the creation transition.
-                    ->placeholder('(new ticket)')
+                    ->placeholder(__('sao.help.newTicket'))
                     ->badge(),
                 TextColumn::make('toStatus.name')
-                    ->label('To')
+                    ->label(__('sao.fields.to_status'))
                     ->badge(),
                 TextColumn::make('label')
                     ->searchable(),

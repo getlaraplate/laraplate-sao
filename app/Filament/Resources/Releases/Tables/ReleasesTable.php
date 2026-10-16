@@ -20,7 +20,6 @@ final class ReleasesTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('project.name')
-                        ->label('Project')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('version')
@@ -30,7 +29,6 @@ final class ReleasesTable
                         ->badge()
                         ->searchable(),
                     TextColumn::make('tags_count')
-                        ->label('Tags')
                         ->counts('tags')
                         ->numeric(),
                     TextColumn::make('released_at')

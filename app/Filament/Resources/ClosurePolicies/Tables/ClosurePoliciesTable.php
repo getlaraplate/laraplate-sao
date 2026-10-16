@@ -20,7 +20,6 @@ final class ClosurePoliciesTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('project.name')
-                        ->label('Project')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('name')
@@ -29,7 +28,6 @@ final class ClosurePoliciesTable
                     TextColumn::make('action')
                         ->badge(),
                     TextColumn::make('conditions')
-                        ->label('Conditions')
                         ->badge()
                         ->state(static fn ($record): array => array_map(
                             static fn (array $condition): string => (string) ($condition['key'] ?? ''),

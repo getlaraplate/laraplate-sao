@@ -16,20 +16,18 @@ final class OwnershipSuggestionInfolist
         return $schema
             ->components([
                 TextEntry::make('summary')
-                    ->label('Summary')
                     ->columnSpanFull()
                     ->state(static fn (OwnershipSuggestion $record): string => app(SuggestionPhraser::class)->phrase($record)),
                 TextEntry::make('ticket.key')
-                    ->label('Ticket'),
+                    ->label(__('sao.fields.ticket')),
                 TextEntry::make('suggestedUser.name')
-                    ->label('Suggested owner')
+                    ->label(__('sao.fields.suggested_owner'))
                     ->placeholder('—'),
                 TextEntry::make('rule')
                     ->badge(),
                 TextEntry::make('score')
                     ->numeric(),
                 TextEntry::make('evidence_paths')
-                    ->label('Evidence paths')
                     ->badge()
                     ->columnSpanFull()
                     ->placeholder('—')

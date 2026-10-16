@@ -16,31 +16,25 @@ final class ClosureAuditInfolist
         return $schema
             ->components([
                 TextEntry::make('ticket.key')
-                    ->label('Ticket'),
+                    ->label(__('sao.fields.ticket')),
                 TextEntry::make('policy.name')
-                    ->label('Policy')
+                    ->label(__('sao.fields.policy'))
                     ->placeholder('—'),
                 TextEntry::make('action')
                     ->badge(),
                 TextEntry::make('reporting_environment')
-                    ->label('Environment')
                     ->placeholder('—'),
                 IconEntry::make('is_premature')
-                    ->label('Premature closure')
                     ->boolean(),
                 TextEntry::make('closed_at')
-                    ->label('Closed at')
                     ->dateTime(),
                 TextEntry::make('reopened_at')
-                    ->label('Reopened at')
                     ->dateTime()
                     ->placeholder('—'),
                 TextEntry::make('returned_after_seconds')
-                    ->label('Returned after (seconds)')
                     ->numeric()
                     ->placeholder('—'),
                 TextEntry::make('conditions_held')
-                    ->label('Closed because')
                     ->badge()
                     ->columnSpanFull()
                     ->state(static fn (ClosureAudit $record): array => self::heldConditions($record)),

@@ -27,19 +27,14 @@ final class SignalForm
                     ->options(SignalState::class)
                     ->required(),
                 TextInput::make('group_key')
-                    ->label('Group key')
                     ->disabled(),
                 TextInput::make('algo_version')
-                    ->label('Algorithm version')
                     ->disabled(),
                 TextInput::make('occurrence_count')
-                    ->label('Occurrences')
                     ->disabled(),
                 TextInput::make('first_seen_at')
-                    ->label('First seen')
                     ->disabled(),
                 TextInput::make('last_seen_at')
-                    ->label('Last seen')
                     ->disabled(),
             ]));
     }

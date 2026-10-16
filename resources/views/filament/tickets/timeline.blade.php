@@ -17,6 +17,6 @@
             @endif
         </li>
     @empty
-        <li class="text-gray-500 dark:text-gray-400">No history yet.</li>
+        <li class="text-gray-500 dark:text-gray-400">{{ __('sao.messages.noHistoryYet') }}</li>
     @endforelse
 </ol>

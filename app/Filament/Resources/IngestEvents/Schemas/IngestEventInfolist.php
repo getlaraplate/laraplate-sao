@@ -14,31 +14,28 @@ final class IngestEventInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('delivery_id')
-                    ->label('Delivery'),
+                TextEntry::make('delivery_id'),
                 TextEntry::make('status')
                     ->badge(),
                 TextEntry::make('outcome')
                     ->placeholder('—'),
                 TextEntry::make('connection.name')
-                    ->label('Connection')
+                    ->label(__('sao.fields.connection'))
                     ->placeholder('—'),
                 TextEntry::make('sourceProfile.name')
-                    ->label('Source profile')
+                    ->label(__('sao.fields.source_profile'))
                     ->placeholder('—'),
                 TextEntry::make('project.name')
-                    ->label('Project')
+                    ->label(__('sao.fields.project'))
                     ->placeholder('—'),
                 TextEntry::make('winning_rule')
-                    ->label('Winning rule')
                     ->placeholder('—'),
                 TextEntry::make('signal.group_key')
-                    ->label('Signal')
+                    ->label(__('sao.fields.signal'))
                     ->placeholder('—'),
                 TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('payload')
-                    ->label('Payload')
                     ->columnSpanFull()
                     ->state(static fn (IngestEvent $record): string => (string) json_encode($record->payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)),
             ]);

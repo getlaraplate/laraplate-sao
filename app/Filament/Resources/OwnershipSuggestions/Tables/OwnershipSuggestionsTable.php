@@ -25,11 +25,10 @@ final class OwnershipSuggestionsTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('ticket.key')
-                        ->label('Ticket')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('suggestedUser.name')
-                        ->label('Suggested owner')
+                        ->label(__('sao.fields.suggested_owner'))
                         ->placeholder('—')
                         ->searchable(),
                     TextColumn::make('rule')
@@ -45,7 +44,7 @@ final class OwnershipSuggestionsTable
                 // suggestion is never applied automatically).
                 $default_actions->unshift(
                     Action::make('acceptSuggestion')
-                        ->label('Accept')
+                        ->label(__('sao.actions.accept'))
                         ->icon(Heroicon::OutlinedUserPlus)
                         ->requiresConfirmation()
                         ->visible(static fn (OwnershipSuggestion $record): bool => $record->suggested_user_id !== null)
@@ -53,7 +52,7 @@ final class OwnershipSuggestionsTable
                             $ticket = app(OwnershipSuggestionApplier::class)->apply($record);
 
                             Notification::make()
-                                ->title('Owner assigned')
+                                ->title(__('sao.messages.ownerAssigned'))
                                 ->body("{$record->suggestedUser?->name} is now the assignee of {$ticket->key}.")
                                 ->success()
                                 ->send();

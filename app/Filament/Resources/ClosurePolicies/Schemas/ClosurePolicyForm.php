@@ -22,15 +22,17 @@ final class ClosurePolicyForm
      * {@see \Modules\SAO\Closure\ClosureConditionRegistry}. Duration-based ones
      * (`no_recurrence_for`, `resolved_for`) take a `days` entry in their config.
      *
-     * @var array<string, string>
+     * Each is labelled by its `sao.conditions.*` key.
+     *
+     * @var list<string>
      */
     private const array CONDITION_KEYS = [
-        'pull_request_merged' => 'Pull request merged',
-        'no_recurrence_for' => 'No recurrence for (config: days)',
-        'fix_released' => 'Fix released (shipped only)',
-        'fix_deployed_there' => 'Fix deployed there',
-        'resolved_for' => 'Resolved for (config: days)',
-        'internal_tickets_only' => 'Internal tickets only',
+        'pull_request_merged',
+        'no_recurrence_for',
+        'fix_released',
+        'fix_deployed_there',
+        'resolved_for',
+        'internal_tickets_only',
     ];
 
     public static function configure(Schema $schema): Schema
@@ -38,7 +40,6 @@ final class ClosurePolicyForm
         return self::configureForm($schema
             ->components([
                 Select::make('project_id')
-                    ->label('Project')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload()
@@ -50,20 +51,19 @@ final class ClosurePolicyForm
                     ->options(ClosureAction::class)
                     ->default(ClosureAction::Propose->value)
                     ->required()
-                    ->helperText('Propose is the prudent default; Close acts automatically.'),
+                    ->helperText(__('sao.help.policyAction')),
                 Toggle::make('is_active')
-                    ->label('Active')
                     ->default(true),
                 Repeater::make('conditions')
-                    ->helperText('All conditions must hold (AND). An empty set never closes.')
+                    ->helperText(__('sao.help.conditions'))
                     ->schema([
                         Select::make('key')
-                            ->options(self::CONDITION_KEYS)
+                            ->options(static fn (): array => array_combine(self::CONDITION_KEYS, array_map(static fn (string $key): string => (string) __('sao.conditions.' . $key), self::CONDITION_KEYS)))
                             ->required(),
                         KeyValue::make('config')
                             ->keyLabel('Setting')
                             ->valueLabel('Value')
-                            ->helperText('e.g. days = 14 for the duration-based conditions.'),
+                            ->helperText(__('sao.help.conditionConfig')),
                     ])
                     ->addActionLabel('Add condition')
                     ->columns(1),

@@ -21,36 +21,32 @@ final class ConnectionForm
         return self::configureForm($schema
             ->components([
                 Select::make('driver_key')
-                    ->label('Driver')
                     ->options(self::driverOptions())
                     ->required()
                     ->searchable(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('base_url')
-                    ->label('Base URL')
                     ->url()
                     ->maxLength(2048),
                 Select::make('capabilities')
                     ->options(Capability::class)
                     ->multiple()
                     ->required()
-                    ->helperText('Must be a subset of what the chosen driver declares.'),
+                    ->helperText(__('sao.help.connectionCapabilities')),
                 // The secret is write-only: never rendered back from the encrypted
                 // column, and only persisted when the operator types a new value.
                 KeyValue::make('credential')
-                    ->label('Credential (write-only)')
                     ->keyLabel('Field')
                     ->valueLabel('Value')
                     ->afterStateHydrated(static fn (KeyValue $component): mixed => $component->state([]))
                     ->dehydrated(static fn (mixed $state): bool => filled($state))
-                    ->helperText('Leave empty to keep the stored secret. Values are encrypted at rest and never shown again.'),
+                    ->helperText(__('sao.help.credential')),
                 TextInput::make('credential_ref')
-                    ->label('Credential env reference')
-                    ->helperText('Optional env/config key that overrides the stored credential.')
+                    ->helperText(__('sao.help.credentialRef'))
                     ->maxLength(255),
                 KeyValue::make('config')
-                    ->helperText('Non-secret driver configuration.'),
+                    ->helperText(__('sao.help.driverConfig')),
             ]));
     }
 

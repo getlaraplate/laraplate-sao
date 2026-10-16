@@ -14,6 +14,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Modules\SAO\Enums\Capability;
 use Modules\SAO\Enums\SyncDirection;
 
@@ -28,14 +29,17 @@ final class BindingsRelationManager extends RelationManager
 {
     protected static string $relationship = 'bindings';
 
-    protected static ?string $title = 'Integrations';
+    #[Override]
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return (string) __('sao.pages.integrations');
+    }
 
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 Select::make('connection_id')
-                    ->label('Connection')
                     ->relationship('remoteConnection', 'name')
                     ->searchable()
                     ->preload()
@@ -43,22 +47,19 @@ final class BindingsRelationManager extends RelationManager
                 Select::make('capability')
                     ->options(Capability::class)
                     ->required()
-                    ->helperText('Must be a capability the chosen connection exposes.'),
+                    ->helperText(__('sao.help.bindingCapability')),
                 TextInput::make('remote_identifier')
-                    ->label('Remote identifier')
-                    ->helperText('The remote project id/key/slug this binding targets.')
+                    ->helperText(__('sao.help.remoteIdentifier'))
                     ->maxLength(255),
                 Select::make('sync_direction')
                     ->options(SyncDirection::class)
                     ->default(SyncDirection::Disabled->value)
                     ->required(),
                 KeyValue::make('status_map')
-                    ->label('Status map')
                     ->keyLabel('Remote status')
                     ->valueLabel('Canonical category')
-                    ->helperText('Remote status name → canonical category.'),
+                    ->helperText(__('sao.help.statusMap')),
                 KeyValue::make('priority_map')
-                    ->label('Priority map')
                     ->keyLabel('Remote priority')
                     ->valueLabel('Canonical priority'),
             ]);
@@ -70,15 +71,13 @@ final class BindingsRelationManager extends RelationManager
             ->recordTitleAttribute('remote_identifier')
             ->columns([
                 TextColumn::make('remoteConnection.name')
-                    ->label('Connection')
+                    ->label(__('sao.fields.connection'))
                     ->badge(),
                 TextColumn::make('capability')
                     ->badge(),
                 TextColumn::make('sync_direction')
-                    ->label('Direction')
                     ->badge(),
                 TextColumn::make('remote_identifier')
-                    ->label('Remote')
                     ->placeholder('—'),
             ])
             ->headerActions([

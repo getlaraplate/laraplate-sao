@@ -20,7 +20,6 @@ final class IngestEventsTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('delivery_id')
-                        ->label('Delivery')
                         ->limit(24)
                         ->searchable()
                         ->sortable(),
@@ -31,15 +30,12 @@ final class IngestEventsTable
                         ->placeholder('—')
                         ->searchable(),
                     TextColumn::make('connection.name')
-                        ->label('Connection')
                         ->placeholder('—')
                         ->sortable(),
                     TextColumn::make('project.name')
-                        ->label('Project')
                         ->placeholder('—')
                         ->sortable(),
                     TextColumn::make('signal.group_key')
-                        ->label('Signal')
                         ->placeholder('—')
                         ->limit(32),
                     TextColumn::make('created_at')

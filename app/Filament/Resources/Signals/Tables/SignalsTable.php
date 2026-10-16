@@ -24,17 +24,14 @@ final class SignalsTable
                     TextColumn::make('project.name')
                         ->searchable(),
                     TextColumn::make('group_key')
-                        ->label('Group key')
                         ->badge()
                         ->searchable(),
                     TextColumn::make('state')
                         ->badge(),
                     TextColumn::make('occurrence_count')
-                        ->label('Occurrences')
                         ->numeric()
                         ->sortable(),
                     TextColumn::make('algo_version')
-                        ->label('Algo')
                         ->numeric()
                         ->toggleable(),
                     TextColumn::make('first_seen_at')

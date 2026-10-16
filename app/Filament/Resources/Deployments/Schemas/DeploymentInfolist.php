@@ -15,21 +15,20 @@ final class DeploymentInfolist
         return $schema
             ->components([
                 TextEntry::make('project.name')
-                    ->label('Project'),
+                    ->label(__('sao.fields.project')),
                 TextEntry::make('version'),
                 TextEntry::make('status')
                     ->badge(),
                 TextEntry::make('environment.name')
-                    ->label('Environment')
+                    ->label(__('sao.fields.environment'))
                     ->placeholder('—'),
                 TextEntry::make('release.version')
-                    ->label('Release')
+                    ->label(__('sao.fields.release'))
                     ->placeholder('—'),
                 TextEntry::make('connection.name')
-                    ->label('Connection')
+                    ->label(__('sao.fields.connection'))
                     ->placeholder('—'),
                 TextEntry::make('external_id')
-                    ->label('External id')
                     ->placeholder('—'),
                 TextEntry::make('started_at')
                     ->dateTime(),
@@ -37,7 +36,6 @@ final class DeploymentInfolist
                     ->dateTime()
                     ->placeholder('—'),
                 TextEntry::make('meta')
-                    ->label('Meta')
                     ->columnSpanFull()
                     ->placeholder('—')
                     ->state(static fn (Deployment $record): ?string => $record->meta === null

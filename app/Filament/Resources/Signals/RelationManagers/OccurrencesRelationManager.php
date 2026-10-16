@@ -8,6 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * The occurrences of a signal, read-only: occurrences are recorded by the ingest
@@ -17,7 +18,11 @@ final class OccurrencesRelationManager extends RelationManager
 {
     protected static string $relationship = 'occurrences';
 
-    protected static ?string $title = 'Occurrences';
+    #[Override]
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return (string) __('sao.pages.occurrences');
+    }
 
     public function form(Schema $schema): Schema
     {

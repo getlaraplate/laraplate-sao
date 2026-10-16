@@ -21,16 +21,13 @@ final class ClosureAuditsTable
             columns: static function (Collection $default_columns): void {
                 $default_columns->unshift(
                     TextColumn::make('ticket.key')
-                        ->label('Ticket')
                         ->searchable()
                         ->sortable(),
                     TextColumn::make('action')
                         ->badge(),
                     TextColumn::make('reporting_environment')
-                        ->label('Environment')
                         ->placeholder('—'),
                     IconColumn::make('is_premature')
-                        ->label('Premature')
                         ->boolean(),
                     TextColumn::make('closed_at')
                         ->dateTime()

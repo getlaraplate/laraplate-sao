@@ -44,7 +44,6 @@ final class TicketForm
                 Textarea::make('description')
                     ->columnSpanFull(),
                 DateTimePicker::make('due_at')
-                    ->label('Due date')
                     ->seconds(false),
                 Select::make('reporter_id')
                     ->relationship('reporter', 'name'),
@@ -60,7 +59,7 @@ final class TicketForm
                     ->multiple()
                     ->preload()
                     ->searchable()
-                    ->helperText('Users following this ticket. Notification delivery is out of scope.'),
+                    ->helperText(__('sao.help.watchers')),
                 SpatieMediaLibraryFileUpload::make('attachments')
                     ->collection('attachments')
                     ->multiple()

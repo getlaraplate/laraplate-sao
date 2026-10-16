@@ -11,6 +11,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Modules\SAO\Enums\TicketRelationType;
 
 /**
@@ -22,7 +23,11 @@ final class RelationsRelationManager extends RelationManager
 {
     protected static string $relationship = 'relations';
 
-    protected static ?string $title = 'Relations';
+    #[Override]
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return (string) __('sao.pages.relations');
+    }
 
     public function form(Schema $schema): Schema
     {
@@ -32,7 +37,6 @@ final class RelationsRelationManager extends RelationManager
                     ->options(TicketRelationType::class)
                     ->required(),
                 Select::make('target_ticket_id')
-                    ->label('Target ticket')
                     ->relationship('target', 'key')
                     ->searchable()
                     ->preload()
@@ -48,10 +52,8 @@ final class RelationsRelationManager extends RelationManager
                 TextColumn::make('type')
                     ->badge(),
                 TextColumn::make('target.key')
-                    ->label('Target')
                     ->searchable(),
                 TextColumn::make('target.title')
-                    ->label('Target title')
                     ->limit(40)
                     ->toggleable(),
             ])

@@ -20,13 +20,12 @@ final class ReleaseForm
         return self::configureForm($schema
             ->components([
                 Select::make('project_id')
-                    ->label('Project')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 TextInput::make('version')
-                    ->helperText('The stable label the release is named as, e.g. 1.4.0.')
+                    ->helperText(__('sao.help.releaseVersion'))
                     ->required()
                     ->maxLength(255),
                 Select::make('status')
@@ -34,8 +33,7 @@ final class ReleaseForm
                     ->default(ReleaseStatus::Announced->value)
                     ->required(),
                 DateTimePicker::make('released_at')
-                    ->label('Released at')
-                    ->helperText('Set when a stable tag first realizes the release.'),
+                    ->helperText(__('sao.help.releasedAt')),
             ]));
     }
 }
