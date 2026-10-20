@@ -57,7 +57,7 @@ Add repository to your `composer.json` file:
 ```
 
 ```bash
-composer require joshbrw/laravel-module-installer swolley/laraplate-core swolley/laraplate-sao
+composer require joshbrw/laravel-module-installer getlaraplate/laraplate-core getlaraplate/laraplate-sao
 ```
 
 Then, you can install the module by running the following command:
