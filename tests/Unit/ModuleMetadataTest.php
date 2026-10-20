@@ -48,7 +48,7 @@ test('module.json does not declare the AI module before phase 8', function (): v
 test('composer.json declares the agreed package identity and licence', function (): void {
     $config = sao_read_json('composer.json');
 
-    expect($config['name'])->toBe('getlaraplate/laraplate-sao');
+    expect($config['name'])->toBe('getlaraplate/larasao');
     expect($config['vendor'] ?? null)->toBe('getlaraplate');
     expect($config['license'])->toBe('AGPL-3.0-or-later');
     expect($config['type'])->toBe('laravel-module');

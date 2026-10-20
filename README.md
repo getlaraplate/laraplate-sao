@@ -47,17 +47,17 @@ Add repository to your `composer.json` file:
 "repositories": [
     {
         "type": "composer",
-        "url": "https://github.com/getlaraplate/laraplate-core.git"
+        "url": "https://github.com/getlaraplate/laracore.git"
     },
     {
         "type": "composer",
-        "url": "https://github.com/getlaraplate/laraplate-sao.git"
+        "url": "https://github.com/getlaraplate/larasao.git"
     }
 ]
 ```
 
 ```bash
-composer require joshbrw/laravel-module-installer getlaraplate/laraplate-core getlaraplate/laraplate-sao
+composer require joshbrw/laravel-module-installer getlaraplate/laracore getlaraplate/larasao
 ```
 
 Then, you can install the module by running the following command:
