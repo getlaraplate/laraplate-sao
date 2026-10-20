@@ -1,7 +1,7 @@
 {
   "name": "getlaraplate/laraplate-sao",
   "vendor": "getlaraplate",
-  "description": "SAO module for Laraplate: Simply Another Orchestrator — correlation engine between code, errors and work.",
+  "description": "SAO (Simply Another Orchestrator): ticketing that correlates code, errors and work, with issue tracker, VCS and log integrations.",
   "version": "v1.5.0",
   "keywords": [
     "laravel",
