@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Core\Contracts\IOptimisticLockableModel;
 use Modules\Core\Contracts\ISearchableModel;
+use Modules\Core\Enums\VersionStrategy;
 use Modules\Core\Helpers\HasMedia;
 use Modules\Core\Locking\Traits\HasOptimisticLocking;
 use Modules\Core\Models\User;
@@ -31,7 +32,6 @@ use Modules\SAO\Enums\TicketReleaseState;
 use Modules\SAO\Models\Pivot\TicketLabel;
 use Modules\SAO\Models\Pivot\TicketWatcher;
 use Override;
-use Overtrue\LaravelVersionable\VersionStrategy;
 use Spatie\MediaLibrary\HasMedia as MediaContract;
 
 final class Ticket extends Model implements IOptimisticLockableModel, ISearchableModel, MediaContract
