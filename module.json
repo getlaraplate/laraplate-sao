@@ -2,7 +2,7 @@
     "name": "SAO",
     "laraplate_owned": true,
     "alias": "sao",
-    "description": "SAO module — Simply Another Orchestrator: correlation engine between code, errors and work.",
+    "description": "SAO (Simply Another Orchestrator): ticketing that correlates code, errors and work, with issue tracker, VCS and log integrations.",
     "color": "bright-red",
     "keywords": [
         "sao",
