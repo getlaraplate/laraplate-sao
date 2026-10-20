@@ -39,11 +39,11 @@ Add repository to your `composer.json` file:
 "repositories": [
     {
         "type": "composer",
-        "url": "https://github.com/swolley/laraplate-core.git"
+        "url": "https://github.com/getlaraplate/laraplate-core.git"
     },
     {
         "type": "composer",
-        "url": "https://github.com/swolley/laraplate-sao.git"
+        "url": "https://github.com/getlaraplate/laraplate-sao.git"
     }
 ]
 ```
