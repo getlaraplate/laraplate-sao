@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2026-10-21
+
+### 🚀 Features
+
+- *(filament)* Split the SAO sidebar into four navigation groups
+- *(sao)* Mark the parts of a parent for related-record authorization
+- *(sao)* The ticket edit page refuses a stale save
+- *(sao)* Translation keys named like the database
+- *(sao)* Translated resource names and navigation groups
+- *(sao)* Backoffice strings from the sao lang file
+
+### 🐛 Bug Fixes
+
+- *(sao)* The ticket edit page opens again
+- *(sao)* Read the default locale through LocaleContext
+- *(sao)* Standardize singular labels across multiple languages
+
+### 🚜 Refactor
+
+- Import Core VersionStrategy (D14)
+
+### 📚 Documentation
+
+- API access control
+- Verbatim AGPL-3.0 licence text, copyright in the README
+- Point the links to the getlaraplate organization
+- Fix a typo in the work in progress notice
+- Use the Laraplate brand logo in the README
+
+### 🧪 Testing
+
+- Follow the renamed API switch
+- An authenticated denial answers 403
+- Build AdvancedSearchService from a strategy resolver
+
+### ⚙️ Miscellaneous Tasks
+
+- *(sao)* Remove the unused nwidart module scaffold
+- Point repository links to the getlaraplate organization
+- Rename the Composer package to the getlaraplate vendor
+- Align the package description with the repository description
+- Align the module description with the repository description
+- Call the organization CLA workflow
+- Rename the repository and package from laraplate-<module> to lara<module>
+
 ## [1.5.0] - 2026-10-07
 
 ### 🚀 Features
